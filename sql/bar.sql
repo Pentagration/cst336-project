@@ -32,4 +32,11 @@ INSERT INTO bars VALUES
 (11,'100 Grand Bar','red','n','none',1.5,190,1.50), 
 (12,'Mounds','red','n','coconut',1.75,240,1.75), 
 (13,'Nestle Crunch','blue','n','none',1.55,220,1.50), 
-(14,'Mr. Goodbar','yellow','y','peanuts',1.75,260,1.75); 
+(14,'Mr. Goodbar','yellow','y','peanuts',1.75,260,1.75), 
+(15,'Heath','brown','n','none',1.4,210,1.50),
+(16,'Skor','black','n','none',1.4,200,1.50),
+(17,'Oh Henry!','yellow','y','peanuts',1.8,240,1.75),
+(18,'5th Avenue','brown','y','peanuts',2.0,260,1.75),
+(19,'Whatchamacallit','tan','y','peanuts',1.6,230,1.75),
+(20,'Cadbury Creme Egg','purple','n','none',1.2,150,2.00);
+
