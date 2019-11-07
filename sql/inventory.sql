@@ -2,7 +2,7 @@
 USE cst336project;
 
 -- bar table
-CREATE TABLE IF NOT EXISTS `cst336project`.`bars`(
+CREATE TABLE IF NOT EXISTS `cst336project`.`inventory`(
 `bar_id` INT(5) NOT NULL AUTO_INCREMENT,
 `qty_instock` INT(5) NOT NULL,        -- Quantity available to sell
 `qty_inshipping` INT(5) NOT NULL,     -- Quantity waiting to be shipped to customers
