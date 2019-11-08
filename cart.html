@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <!--
+    Here is a layout for the shopping cart. Will look into the best way to add products to the table. 
+    -->
+    <head>
+        <meta charset = "utf-8"/>
+        <title> Shopping Cart</title>
+        <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/scripts.js"></script>
+        
+    </head>
+
+    <body>
+        <header>
+            <h1>Candy Skeleton Layout</h1>
+        </header>
+
+        <main>
+            <h2>Your Cart</h2>
+            <br>
+            <hr style="width:50%">
+
+            <table id="cart">
+                <thead>
+                    <th class="Product_Description">Product</th>
+                    <th class="Quantity">Quantity</th>
+                    <th class="Price">Price</th>
+                    <th class="Total">Total</th>
+                </thead>
+                <tr>
+                    <td><img src="" alt="Item 1"></td>
+                    <td><input type="number" min="1" max="5" id="quantity1"></td>
+                    <td id="price1">44.99</td>
+                    <td class="total1"></td>
+                </tr>
+                <tr>
+                    <td><img src="" alt="Item 2"></td>
+                    <td><input type="number" min="1" max="5" id="quantity2"></td>
+                    <td id="price2">59.99</td>
+                    <td class="total2"></td>
+                </tr>
+
+            </table>
+
+            <div id="summary">
+                <button>Update Cart</button>
+                <h5>Subtotal:</h5>
+                <h5 class="subtotal"></h5>
+                <h3>Total:</h3>
+                <h3 id="total"></h3>
+            </div>
+            
+        </main>
+
+        <footer>
+                <figure>
+                    <img src = "img/CSUMB-Logo.png" alt = "CSUMB Logo" id="csumb"/>
+                </figure>
+                <hr>
+                <div id="footer">
+                    CST 336 Internet Programming. 2019 Gonzalez <br/>
+                    <strong>Disclaimer</strong> The content of this webpage is for 
+                    academic purposes only.
+                </div>
+            </footer>
+
+    </body>
+
+
+</html>
