@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `cst336project`.`inventory`(
 PRIMARY KEY(`bar_id`));
 
 -- insert rows into the tables
-INSERT INTO bars VALUES
+INSERT INTO inventory VALUES
 (1,100,0,0,0), 
 (2,100,0,0,0), 
 (3,100,0,0,0), 
