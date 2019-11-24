@@ -1,12 +1,8 @@
--- create the database
-DROP DATABASE IF EXISTS cst336project;
-CREATE DATABASE cst336project;
-
 -- select the database
-USE cst336project;
+USE cst336_db026;
 
 -- bar table
-CREATE TABLE IF NOT EXISTS `cst336project`.`bars`(
+CREATE TABLE IF NOT EXISTS `cst336_db026`.`p_bars`(
 `bar_id` INT(5) NOT NULL AUTO_INCREMENT,
 `candy_name` VARCHAR(45) NOT NULL,
 `wrap_color` VARCHAR(45) NOT NULL,
@@ -18,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `cst336project`.`bars`(
 PRIMARY KEY(`bar_id`));
 
 -- insert rows into the tables
-INSERT INTO bars VALUES
+INSERT INTO p_bars VALUES
 (1,'Kit Kat','red','n','none',1.5,210,1.50), 
 (2,'Snickers','brown','y','peanuts',1.86,250,1.75), 
 (3,'Twix','gold','n','none',1.79,250,1.50), 
