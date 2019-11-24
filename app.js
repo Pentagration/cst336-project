@@ -6,6 +6,7 @@ app.use(express.static("public"));
 
 const request = require("request");
 const mysql = require("mysql");
+const tools = require("./tools.js");
 
 // routes
 
@@ -13,6 +14,16 @@ const mysql = require("mysql");
 app.get ("/", function (req, res) {
     res.render("index.ejs");
 });//root route
+
+
+app.get("/admin", function(req, res) {
+    res.render("adminlogin.ejs");
+});//admin
+
+
+app.get("/cart", function(req, res) {
+    res.render("cart.ejs");
+});//cart
 
 // repurpose this for candy bar search?
 app.get("/search", async function(req, res) {
@@ -57,29 +68,6 @@ app.get("/api/updateFavorites",function(req, res) {
     res.send("it works");
     
 });//update favorites
-
-
-// this one can be deleted?
-app.get("/displayKeywords", async function(req, res) {
-    var imageURLs = await tools.getRandomImages("", 1);
-    var conn = tools.createConnection();
-    var sql = "SELECT DISTINCT keyword FROM favorites ORDER BY keyword";
-    
-    conn.connect(function(err){
-        
-        if (err) throw err;
-        conn.query(sql, function(err, result) {
-            if (err) throw err;
-            conn.end();
-            res.render("favorites", {"rows":result, "imageURLs": imageURLs});
-            console.log(result);
-        });//query
-        
-        
-    });//connect
-    
-    
-});//display keywords
 
 
 // repurpose to display cart, no keyword search functionality needed
