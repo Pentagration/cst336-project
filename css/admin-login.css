@@ -12,6 +12,7 @@
   background-image: url('https://team5-project.herokuapp.com/img/logo.png');
   background-repeat: no-repeat;
   background-size: 25%;
+  background-position: center center;
 }
 
 .login-heading {
