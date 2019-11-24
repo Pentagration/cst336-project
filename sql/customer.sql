@@ -1,8 +1,8 @@
 -- select the database
-USE cst336project;
+USE cst336_db026;
 
 -- customer table
-CREATE TABLE IF NOT EXISTS `cst336project`.`customer` (
+CREATE TABLE IF NOT EXISTS `cst336_db026`.`p_customer` (
     `customer_id` INT(11) NOT NULL AUTO_INCREMENT,
     `first_name` VARCHAR(45) NOT NULL,
     `last_name` VARCHAR(45) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `cst336project`.`customer` (
 );
 
 -- customer table
-INSERT INTO customer VALUES 
+INSERT INTO p_customer VALUES 
 (1,'Tony','Stark','10880 Malibu Point','Malibu','CA',90265),
 (2,'Natasha','Romanoff','200 Park Avenue','New York','NY',10017),
 (3,'Steve','Rogers','569 Leaman Place','Brooklyn Heights','NY',11201),
