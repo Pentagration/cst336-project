@@ -35,6 +35,22 @@ app.get("/search", async function(req, res) {
     //console.log("imageURLs: " + imageURLs);
     res.render("results", {"imageURLs":imageURLs, "keyword":keyword});
     
+    var conn = tools.createConnection();
+    var sql = "SELECT imageURL FROM favorites WHERE keyword = ?";
+    var sqlParams = [req.query.keyword];
+    
+    conn.connect(function(err){
+        
+        if (err) throw err;
+        conn.query(sql, sqlParams,function(err, results) {
+            if (err) throw err;
+            conn.end();
+            res.send(results);
+            
+        });//query
+        
+    });//connect
+    
 });//search
 
 // repurpose this for cart update?
@@ -64,8 +80,6 @@ app.get("/api/updateFavorites",function(req, res) {
         });//query
         
     });//connect
-    
-    res.send("it works");
     
 });//update favorites
 
