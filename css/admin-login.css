@@ -11,7 +11,7 @@
 .bg-image {
   background-image: url('https://team5-project.herokuapp.com/img/logo.png');
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 25%;
 }
 
 .login-heading {
