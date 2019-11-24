@@ -1,8 +1,8 @@
 -- select the database
-USE cst336project;
+USE cst336_db026;
 
 -- bar table
-CREATE TABLE IF NOT EXISTS `cst336project`.`inventory`(
+CREATE TABLE IF NOT EXISTS `cst336_db026`.`p_inventory`(
 `bar_id` INT(5) NOT NULL AUTO_INCREMENT,
 `qty_instock` INT(5) NOT NULL,        -- Quantity available to sell
 `qty_inshipping` INT(5) NOT NULL,     -- Quantity waiting to be shipped to customers
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `cst336project`.`inventory`(
 PRIMARY KEY(`bar_id`));
 
 -- insert rows into the tables
-INSERT INTO inventory VALUES
+INSERT INTO p_inventory VALUES
 (1,100,0,0,0), 
 (2,100,0,0,0), 
 (3,100,0,0,0), 
