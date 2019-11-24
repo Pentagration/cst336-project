@@ -11,7 +11,7 @@ const mysql = require("mysql");
 
 // root route
 app.get ("/", function (req, res) {
-    res.render("index.html");
+    res.render("index.ejs");
 });//root route
 
 // repurpose this for candy bar search?
