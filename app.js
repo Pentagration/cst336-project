@@ -14,7 +14,7 @@ app.get('/', function(req, res) {
     var conn = tools.createConnection();    
     conn.connect(function (err) {
         if (err) throw err;
-        var sql = "SELECT * FROM cst336_db026.p_bars";
+        var sql = "SELECT bar_id, candy_name, nut, nut_type, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
         conn.query(sql, function(err, result) {
             if (err) throw err;
             res.render("index", {"candyInfo":result}
