@@ -30,11 +30,11 @@
                 <h4 class="card-title">
                   <%=candyInfo['candy_name']%>
                 </h4>
-                <h5>$<%=candyInfo['price']%></h5>
+                <h5 id="price">$<%=candyInfo['price']%></h5>
                 <ul class="card-text">
-                  <li><b>Nuts: </b><%=candyInfo['nut']%> </li>
-                  <li><b>Nut Type: </b><%=candyInfo['nut_type']%></li>
-                  <li><b>Calories: </b><%=candyInfo['kcal']%></li>
+                  <li id="nuts"><b>Nuts: </b><%=candyInfo['nut']%> </li>
+                  <li id ="nutType"><b>Nut Type: </b><%=candyInfo['nut_type']%></li>
+                  <li id= "calories"><b>Calories: </b><%=candyInfo['kcal']%></li>
                 </ul>
                 <img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">
               </div>
