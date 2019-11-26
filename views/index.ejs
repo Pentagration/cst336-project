@@ -22,24 +22,26 @@
         <div class="row">
 
 <!-- THIS IS WHAT WE HAVE TO REPEAT TWENTY TIMES, ONCE FOR EACH BAR -->
+        <% candyInfo.forEach(function(candyInfo) { %>  
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bars/1.jpg" alt=""></a>
+              <a href="#"><img class="card-img-top" src="img/bars/<%=candyInfo['bar_id']%>.jpg" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">candy_name (psuedo)</a>
+                  <a href="#"><%=candyInfo['candy_name']%></a>
                 </h4>
-                <h5>$1.50 psuedo</h5>
+                <h5><%=candyInfo['price']%></h5>
                 <ul class="card-text">
-                  <li><b>Nuts:</b> psuedo</li>
-                  <li><b>Nut Type:</b> pseudo</li>
-                  <li><b>Calories:</b> pseudo</li>
+                  <li><b>Nuts:</b><%=candyInfo['nut']%> </li>
+                  <li><b>Nut Type:</b><%=candyInfo['nut_type']%></li>
+                  <li><b>Calories:</b><%=candyInfo['kcal']%></li>
                 </ul>
                 <img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">
                 <img class="cartIcon" src="img/cartFull.png" width="20" align="right">
               </div>
             </div>
           </div>
+        <% }) %>
 <!-- END BAR LISTING -->
 
         </div>

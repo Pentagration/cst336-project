@@ -10,10 +10,19 @@ const tools = require("./tools.js");
 
 // routes
 
-// root route
-app.get ("/", function (req, res) {
-    res.render("index.ejs");
-});//root route
+app.get('/', function(req, res) {
+    var conn = tools.createConnection();    
+    conn.connect(function (err) {
+        if (err) throw err;
+        var sql = "SELECT * FROM cst336_db026.p_bars";
+        conn.query(sql, function(err, result) {
+            if (err) throw err;
+            res.render("index", {"candyInfo":result}
+            );
+            console.log(result);
+        });
+    });
+});
 
 
 app.get("/admin", function(req, res) {
