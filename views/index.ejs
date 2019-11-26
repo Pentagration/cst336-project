@@ -25,10 +25,10 @@
         <% candyInfo.forEach(function(candyInfo) { %>  
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bars/<%=candyInfo['bar_id']%>.jpg" alt=""></a>
+              <img class="card-img-top" src="img/bars/<%=candyInfo['bar_id']%>.jpg" alt="">
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><%=candyInfo['candy_name']%></a>
+                  <%=candyInfo['candy_name']%>
                 </h4>
                 <h5>$<%=candyInfo['price']%></h5>
                 <ul class="card-text">
