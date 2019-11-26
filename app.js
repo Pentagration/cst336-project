@@ -17,6 +17,7 @@ app.get('/', function(req, res) {
         var sql = "SELECT bar_id, candy_name, nut, nut_type, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
         conn.query(sql, function(err, result) {
             if (err) throw err;
+            conn.end();
             res.render("index", {"candyInfo":result}
             );
             console.log(result);
