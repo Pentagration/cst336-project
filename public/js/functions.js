@@ -16,10 +16,15 @@ $(document).ready(function(){
     });
     
     function updateCart(action, bar_id) {
-        $.ajax({
-            method: "get",
-            url: "/api/updateCart",
-            data: {"bar_id":bar_id, "action":action}
-        });
+        console.log("UpdateCart Functions");
+        // $.ajax({
+        //     method: "get",
+        //     url: "/api/updateCart",
+        //     data: {"bar_id":bar_id, "action":action}
+        // });
+    };
+    
+    function testFunc() {
+        
     }
 });

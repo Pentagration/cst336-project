@@ -2,10 +2,10 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-item" href="/cart">Cart<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/cart">Cart<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-item" href="/adminLogin">Admin</a>
+            <a class="nav-link" href="/adminLogin">Admin</a>
           </li>
           </li>
         </ul>
@@ -34,15 +34,15 @@
                 <% cartInfo.forEach(function(cartInfo) { %>
                     <tr>
                         <td><img src=img/bars/<%=cartInfo['bar_id']%>.jpg alt="Item" width="80"><%=cartInfo['candy_name']%></td>
-                        <td><%=cartInfo['price']%></td>
+                        <td><%=cartInfo['price'].toFixed(2)%></td>
                         <td><input type="number" min="1" max="5" id="quantity" value= "<%=cartInfo['quantity']%>"></td>
-                        <td><%=cartInfo['price']%>*<%=cartInfo['quantity']%></td>
+                        <td><%=(cartInfo['price']*cartInfo['quantity']).toFixed(2)%></td>
                     </tr>
                 <% }) %>
             </table>
 
             <div id="summary">
-                <button actions="/updateCart">Update Cart</button>
+                <button action="/updateCart">Update Cart</button>
                 <h5>Subtotal:</h5>
                 <h5 class="subtotal"></h5>
                 <h3>Total:</h3>
