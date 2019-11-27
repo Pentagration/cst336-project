@@ -1,4 +1,17 @@
 <%- include('partials/header.ejs') %>
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item" href="/cart">Cart<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item" href="/adminLogin">Admin</a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   
         <header>
             <div class="container"></div>
@@ -29,7 +42,7 @@
             </table>
 
             <div id="summary">
-                <button>Update Cart</button>
+                <button actions="/updateCart">Update Cart</button>
                 <h5>Subtotal:</h5>
                 <h5 class="subtotal"></h5>
                 <h3>Total:</h3>
