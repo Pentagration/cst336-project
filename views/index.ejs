@@ -36,8 +36,7 @@
                   <li id ="nutType"><b>Nut Type: </b><%=candyInfo['nut_type']%></li>
                   <li id= "calories"><b>Calories: </b><%=candyInfo['kcal']%></li>
                 </ul>
-                <!--<img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">-->
-                <img barID=<%=candyInfo['bar_id']%> class="cartIcon" src="img/cartEmpty.png" width="20" align="right">
+                <img bar_id=<%=candyInfo['bar_id']%> class="cartIcon" src="img/cartEmpty.png" width="20" align="right">
               </div>
             </div>
           </div>
@@ -57,4 +56,3 @@
   <!-- /.container -->
   
 <%- include('partials/footer.ejs') %>
-
