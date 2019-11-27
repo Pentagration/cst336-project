@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
             conn.end();
             res.render("index", {"candyInfo":result}
             );
-            console.log(result);
+            //console.log(result);
         });
     });
 });
@@ -63,35 +63,42 @@ app.get("/search", async function(req, res) {
     
 });//search
 
-// repurpose this for cart update?
-app.get("/api/updateFavorites",function(req, res) {
+//updateCart
+app.get("/api/updateCart", function(req, res) {
     
     var conn = tools.createConnection();
     var sql;
     var sqlParams;
     
+    var sql = "INSERT INTO p_cart (bar_id) VALUES(?)"
+    var sqlParams = [req.query.bar_id];
+
+    conn.connect(function(err){
+    if (err) throw err;
+    conn.query(sql, sqlParams, function(err, result){
+        if (err) throw err;
+    });//query
+
+/*    
     if(req.query.action == "add") {
-        sql = "INSERT INTO favorites (imageURL, keyword) VALUES (?, ?)";
-        sqlParams = [req.query.imageURL, req.query.keyword];
+        sql = "INSERT INTO p_cart (bar_id) VALUES (?)";
+        sqlParams = [req.query.bar_id];
     } else {
-        sql = "DELETE FROM favorites WHERE imageURL = ?";
-        sqlParams = [req.query.imageURL];
+        sql = "DELETE FROM p_cart WHERE bar_id = ?";
+        sqlParams = [req.query.bar_id];
     }
     
     
     conn.connect(function(err){
-        
         if (err) throw err;
-        
         conn.query(sql, sqlParams, function(err, result){
-            
             if (err) throw err;
-            
         });//query
-        
+        */
     });//connect
     
-});//update favorites
+    res.send("it works");
+});//updateCart
 
 
 // repurpose to display cart, no keyword search functionality needed
