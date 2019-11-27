@@ -53,7 +53,18 @@ app.post("/adminLogin", async function(req, res) {
     
     if (passwordMatch) {
         req.session.authenticated = true;
-        res.render("admin");
+        var conn = tools.createConnection();    
+        conn.connect(function (err) {
+            if (err) throw err;
+            var sql = "SELECT bar_id, candy_name, wrap_color, nut, nut_type, FORMAT(size_oz,2) AS size_oz, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
+            conn.query(sql, function(err, result) {
+                if (err) throw err;
+                conn.end();
+                res.render("admin", {"candyInfo":result}
+                );
+            });
+        });
+        //res.render("admin");
     }else {
         res.render("adminlogin", {"loginError":true});
     }
@@ -69,7 +80,19 @@ app.get("/logout", function(req, res) {
 });//logout
 
 app.get("/admin", function(req, res) {
-    res.render("admin.ejs");
+    var conn = tools.createConnection();    
+    conn.connect(function (err) {
+        if (err) throw err;
+        var sql = "SELECT bar_id, candy_name, wrap_color, nut, nut_type, FORMAT(size_oz,2) AS size_oz, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
+        conn.query(sql, function(err, result) {
+            if (err) throw err;
+            conn.end();
+            res.render("admin", {"candyInfo":result}
+            );
+            //console.log(result);
+        });
+    });
+    //res.render("admin.ejs");
 });//admin
 
     

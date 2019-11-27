@@ -16,7 +16,25 @@
     </div>
   </nav>
 
-<h1>Here's the good password page</h1>
+<h3>Current bars table</h3>
     
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Color</th><th>Nut</th><th>Nut Type</th><th>Size</th><th>Calories</th><th>Price</th>
+        </tr>
+        <% candyInfo.forEach(function(candyInfo) { %>  
+            <tr>
+                <td><%=candyInfo['bar_id']%></td>
+                <td><%=candyInfo['candy_name']%></td>
+                <td><%=candyInfo['wrap_color']%></td>
+                <td><%=candyInfo['nut']%></td>
+                <td><%=candyInfo['nut_type']%></td>
+                <td><%=candyInfo['size_oz']%></td>
+                <td><%=candyInfo['kcal']%></td>
+                <td><%=candyInfo['price']%></td>
+                <td><button>Delete Item</button></td>
+            </tr>
+        <% }) %>
+    </table>
 
 <%- include('partials/footer.ejs') %>
