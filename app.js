@@ -92,7 +92,7 @@ app.get('/cart', function(req, res) {
     var conn = tools.createConnection();    
     conn.connect(function (err) {
         if (err) throw err;
-        var sql = "SELECT candy_name FROM cst336_db026.p_cart";
+        var sql = "SELECT * FROM cst336_db026.p_cart";
         conn.query(sql, function(err, result) {
             if (err) throw err;
             conn.end();
@@ -175,7 +175,7 @@ app.get("/api/updateCart", function(req, res) {
         });//query
     });//connect
 });//updateCart
-
+ 
 
 // repurpose to display cart, no keyword search functionality needed
 app.get("/api/displayFavorites", function(req, res) {
