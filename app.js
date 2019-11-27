@@ -38,21 +38,6 @@ app.get("/adminLogin", function(req, res) {
     res.render("adminlogin.ejs");
 });//adminLogin
 
- function checkUsername (username) {
-     let sql = "SELECT * FROM cst336_db026.p_authentication WHERE username = ?";
-     return new Promise(function(resolve, reject) {
-         let conn = tools.createConnection();
-         conn.connect(function(err) {
-             if (err) throw err;
-             conn.query(sql, [username], function (err, rows, fields) {
-                 if (err) throw err;
-                 console.log("Rows found: " + rows.length);
-                 resolve(rows);
-             });//query
-         });//connect
-     });//promise
- }
-
 app.post("/adminLogin", async function(req, res) {
     let username = req.body.inputEmail;
     let password = req.body.inputPassword;
@@ -73,6 +58,22 @@ app.post("/adminLogin", async function(req, res) {
         res.render("adminlogin", {"loginError":true});
     }
 });//adminLogin POST
+
+ function checkUsername (username) {
+     let sql = "SELECT * FROM cst336_db026.p_authentication WHERE username = ?";
+     return new Promise(function(resolve, reject) {
+         let conn = tools.createConnection();
+         conn.connect(function(err) {
+             if (err) throw err;
+             conn.query(sql, [username], function (err, rows, fields) {
+                 if (err) throw err;
+                 console.log("Rows found: " + rows.length);
+                 resolve(rows);
+                 conn.end();
+             });//query
+         });//connect
+     });//promise
+ }
 
 app.get("/myAccount", tools.isAuthenticated, function(req, res) {
     res.render("account");
