@@ -16,24 +16,30 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Administrator Login Page</h3>
-              <form>
+              <form method="POST">
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <input type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                   <label for="inputEmail">Login</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
+                <button id="adminSubmit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
               </form>
+              <% if (typeof loginError != "undefined" && loginError) { %>
+                  <h4 class="error">Admin email or password incorrect.</h4>
+              <% } %>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div id="adminInfo">
+  
 </div>
 
 <%- include('partials/footer.ejs') %>
