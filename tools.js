@@ -42,28 +42,28 @@ module.exports = {
         } else {
             next()
         }
-    }
-    // },
+    //}
+    },
     
-    // /**
-    //  * Checks whether the username exists in the database.
-    //  * if found, returns teh corresponding record.
-    //  * @param {string} username
-    //  * @return {array of objects}
-    //  */
-    //  checkUsername: function (username) {
-    //      let sql = "SELECT * FROM cst336_db026.p_authentication WHERE username = ?";
-    //      return new Promise(function(resolve, reject) {
-    //          let conn = createConnection();
-    //          conn.connect(function(err) {
-    //              if (err) throw err;
-    //              conn.query(sql, [username], function (err, rows, fields) {
-    //                  if (err) throw err;
-    //                  console.log("Rows found: " + rows.length);
-    //                  resolve(rows);
-    //              });//query
-    //          });//connect
-    //      });//promise
-    //  }
+    /**
+     * Checks whether the username exists in the database.
+     * if found, returns teh corresponding record.
+     * @param {string} username
+     * @return {array of objects}
+     */
+     checkUsername: function (username) {
+         let sql = "SELECT * FROM cst336_db026.p_authentication WHERE username = ?";
+         return new Promise(function(resolve, reject) {
+             let conn = module.exports.createConnection();
+             conn.connect(function(err) {
+                 if (err) throw err;
+                 conn.query(sql, [username], function (err, rows, fields) {
+                     if (err) throw err;
+                     console.log("Rows found: " + rows.length);
+                     resolve(rows);
+                 });//query
+             });//connect
+         });//promise
+     }
     
     };//END exports
