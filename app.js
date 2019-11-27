@@ -70,16 +70,6 @@ app.get("/api/updateCart", function(req, res) {
     var sql;
     var sqlParams;
     
-    var sql = "INSERT INTO p_cart (bar_id) VALUES(?)"
-    var sqlParams = [req.query.bar_id];
-
-    conn.connect(function(err){
-    if (err) throw err;
-    conn.query(sql, sqlParams, function(err, result){
-        if (err) throw err;
-    });//query
-
-/*    
     if(req.query.action == "add") {
         sql = "INSERT INTO p_cart (bar_id) VALUES (?)";
         sqlParams = [req.query.bar_id];
@@ -88,16 +78,12 @@ app.get("/api/updateCart", function(req, res) {
         sqlParams = [req.query.bar_id];
     }
     
-    
     conn.connect(function(err){
         if (err) throw err;
         conn.query(sql, sqlParams, function(err, result){
             if (err) throw err;
         });//query
-        */
     });//connect
-    
-    res.send("it works");
 });//updateCart
 
 

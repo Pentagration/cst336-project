@@ -8,15 +8,14 @@ $(document).ready(function(){
         
         if ($(this).attr("src") == "img/cartEmpty.png"){
             $(this).attr("src", "img/cartFull.png");
-            
-            updateCart(bar_id);
-            
+            updateCart("add", bar_id);
         } else {
-            $(this).attr("src", "img/cartEmpty.png");            
+            $(this).attr("src", "img/cartEmpty.png");
+            updateCart("delete", bar_id);
         }
     });
     
-    function updateCart(bar_id) {
+    function updateCart(action, bar_id) {
         $.ajax({
             method: "get",
             url: "/api/updateCart",
