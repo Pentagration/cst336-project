@@ -17,12 +17,14 @@
                     <th class="Price">Price</th>
                     <th class="Total">Total</th>
                 </thead>
-                <tr>
-                    <td><img src="" alt="Item 1"></td>
-                    <td><input type="number" min="1" max="5" id="quantity1"></td>
-                    <td id="price1">44.99</td>
-                    <td class="total1"></td>
-                </tr>
+                
+                <% cartInfo.forEach(function(cartInfo) { %>
+                    <tr>
+                        <td><img src="" alt="Item 1"><%=cartInfo['candy_name']%></td>
+                        <td><input type="number" min="1" max="5" id="quantity1"></td>
+                        <td id="price1">44.99</td>
+                    </tr>
+                <% }) %>
                 <tr>
                     <td><img src="" alt="Item 2"></td>
                     <td><input type="number" min="1" max="5" id="quantity2"></td>

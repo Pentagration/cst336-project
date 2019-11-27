@@ -31,10 +31,34 @@ app.get("/admin", function(req, res) {
 });//admin
 
 
-app.get("/cart", function(req, res) {
-    res.render("cart.ejs");
-});//cart
-
+// app.get("/cart", function(req, res) {
+//     var conn = tools.createConnection();
+//     conn.connect(function(err) {
+//         if (err) throw err;
+//         var sql = "SELECT candy_name FROM cst336_db026.p_cart";
+//         conn.query(sql, function(err,result) {
+//             if (err) throw err;
+//             conn.end();
+//             res.render("cart.ejs", {"cartInfo":result});
+//         });
+//     });
+    
+    
+    
+app.get('/cart', function(req, res) {
+    var conn = tools.createConnection();    
+    conn.connect(function (err) {
+        if (err) throw err;
+        var sql = "SELECT candy_name FROM cst336_db026.p_cart";
+        conn.query(sql, function(err, result) {
+            if (err) throw err;
+            conn.end();
+            res.render("cart.ejs", {"cartInfo":result}
+            );
+            //console.log(result);
+        });
+    });
+});
 // repurpose this for candy bar search?
 app.get("/search", async function(req, res) {
     //console.dir(req);
