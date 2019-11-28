@@ -164,8 +164,6 @@ app.get("/search", async function(req, res) {
 
 //updateCart
 app.get("/api/updateCart", function(req, res) {
-    alert("update cart app.js")
-    
     var conn = tools.createConnection();
     var sql;
     var sqlParams;
