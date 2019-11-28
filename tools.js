@@ -38,7 +38,7 @@ module.exports = {
     // checks if user is authenticated
     isAuthenticated: function (req, res, next) {
         if(!req.session.authenticated) {
-            res.redirect('/');
+            res.redirect('/adminLogin');
         } else {
             next()
         }
