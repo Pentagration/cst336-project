@@ -51,7 +51,12 @@
                   <li id ="nutType"><b>Nut Type: </b><%=candyInfo['nut_type']%></li>
                   <li id= "calories"><b>Calories: </b><%=candyInfo['kcal']%></li>
                 </ul>
-                <img bar_id=<%=candyInfo['bar_id']%> class="cartIcon" src="img/cartEmpty.png" width="20" align="right">
+    
+                <% if(candyInfo['quantity'] > 0){ %>
+                  <img bar_id=<%=candyInfo['bar_id']%> class="cartIcon" src="img/cartFull.png" width="20" align="right">
+                <% } else{ %>  
+                  <img bar_id=<%=candyInfo['bar_id']%> class="cartIcon" src="img/cartEmpty.png" width="20" align="right">
+                <% } %>
               </div>
             </div>
           </div>
