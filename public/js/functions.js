@@ -24,7 +24,9 @@ $(document).ready(function(){
         });
     };
     
-    function testFunc() {
+    
+    //Button to update cart on cart.ejs
+    function updateCartBtn() {
         
     }
 });
