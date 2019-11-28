@@ -20,7 +20,7 @@ $(document).ready(function(){
         $.ajax({
             method: "get",
             url: "/api/updateCart",
-            data: {"bar_id":bar_id, "action":action}
+            data: {"bar_id":bar_id, "candy_name":candy_name, "action":action}
         });
     };
     
