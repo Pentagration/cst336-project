@@ -17,15 +17,13 @@
   
         <header>
             <div class="container"></div>
-            <h1>Candy Skeleton Layout</h1>
-            <h2>Your Cart</h2>
+            <br>
+            <h2 align="center">Your Cart</h2>
         </header>
 
         <main>
             <br>
-            <hr style="width:50%">
-
-            <table id="cart">
+            <table class="table table-striped" id="cart">
                 <thead>
                     <th class="Product_Description">Product</th>
                     <th class="UnitPrice">Unit Price</th>
@@ -36,15 +34,15 @@
                 <% cartInfo.forEach(function(cartInfo) { %>
                     <tr>
                         <td><img src=img/bars/<%=cartInfo['bar_id']%>.jpg alt="Item" width="80"><%=cartInfo['candy_name']%></td>
-                        <td><%=cartInfo['price'].toFixed(2)%></td>
+                        <td>$<%=cartInfo['price'].toFixed(2)%></td>
                         <td><input type="number" min="1" max="5" id="quantity" value= "<%=cartInfo['quantity']%>"></td>
-                        <td><%=(cartInfo['price']*cartInfo['quantity']).toFixed(2)%></td>
+                        <td>$<%=(cartInfo['price']*cartInfo['quantity']).toFixed(2)%></td>
                     </tr>
                 <% }) %>
             </table>
 
-            <div id="summary">
-                <button action="/updateCart">Update Cart</button>
+            <div id="summary" align="center">
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" action="/updateCart">Update Cart</button>
                 <h5>Subtotal:</h5>
                 <h5 class="subtotal"></h5>
                 <h3>Total:</h3>
