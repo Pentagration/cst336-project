@@ -18,9 +18,9 @@
 
 <h3>Current bars table</h3>
     
-    <table>
+    <table class="table table-striped">
         <tr>
-            <th>ID</th><th>Name</th><th>Color</th><th>Nut</th><th>Nut Type</th><th>Size</th><th>Calories</th><th>Price</th>
+            <th>ID</th><th>Name</th><th>Wrap Color</th><th>Nut</th><th>Nut Type</th><th>Size</th><th>Calories</th><th>Price</th>
         </tr>
         <% candyInfo.forEach(function(candyInfo) { %>  
             <tr>
@@ -29,10 +29,10 @@
                 <td><%=candyInfo['wrap_color']%></td>
                 <td><%=candyInfo['nut']%></td>
                 <td><%=candyInfo['nut_type']%></td>
-                <td><%=candyInfo['size_oz']%></td>
-                <td><%=candyInfo['kcal']%></td>
-                <td><%=candyInfo['price']%></td>
-                <td><button>Delete Item</button></td>
+                <td><%=candyInfo['size_oz']%> oz.</td>
+                <td><%=candyInfo['kcal']%> cal.</td>
+                <td>$<%=candyInfo['price']%></td>
+                <td><button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Delete Item</button></td>
             </tr>
         <% }) %>
     </table>
