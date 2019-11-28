@@ -29,7 +29,7 @@ app.get('/', function(req, res) {
             conn.end();
             res.render("index", {"candyInfo":result}
             );
-            console.log(result);
+            //console.log(result);
         });
     });
 });
