@@ -17,11 +17,11 @@ $(document).ready(function(){
     
     function updateCart(action, bar_id) {
         console.log("UpdateCart Functions");
-        // $.ajax({
-        //     method: "get",
-        //     url: "/api/updateCart",
-        //     data: {"bar_id":bar_id, "action":action}
-        // });
+        $.ajax({
+            method: "get",
+            url: "/api/updateCart",
+            data: {"bar_id":bar_id, "action":action}
+        });
     };
     
     function testFunc() {
