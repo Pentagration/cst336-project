@@ -80,7 +80,7 @@ app.get("/logout", function(req, res) {
     res.redirect("/");
 });//logout
 
-app.get("/admin", function(req, res) {
+app.get("/admin", tools.isAuthenticated, function(req, res) {
     var conn = tools.createConnection();    
     conn.connect(function (err) {
         if (err) throw err;
