@@ -23,4 +23,9 @@ $(document).ready(function(){
             data: {"bar_id":bar_id, "action":action}
         });
     };
+    
+    //Button to update cart on cart.ejs
+    function updateCartBtn() {
+        
+        }
 });
