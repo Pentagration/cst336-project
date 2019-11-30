@@ -134,6 +134,29 @@ app.get("/api/admin", function(req, res) {
     
 });//updateAdmin
 
+//updateCart
+app.get("/api/updateCart", function(req, res) {
+    var conn = tools.createConnection();
+    var sql;
+    var sqlParams;
+    
+    if(req.query.action == "add") {
+        sql = "INSERT INTO p_cart (bar_id) VALUES (?)";
+        sqlParams = [req.query.bar_id];
+    } else {
+        sql = "DELETE FROM p_cart WHERE bar_id = ?";
+        sqlParams = [req.query.bar_id];
+    }
+    
+    conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, sqlParams, function(err, result){
+            if (err) throw err;
+        });//query
+    });//connect
+});//updateCart
+ 
+
 // repurpose this for candy bar search?
 app.get("/search", async function(req, res) {
     //console.dir(req);
@@ -161,29 +184,6 @@ app.get("/search", async function(req, res) {
     });//connect
     
 });//search
-
-//updateCart
-app.get("/api/updateCart", function(req, res) {
-    var conn = tools.createConnection();
-    var sql;
-    var sqlParams;
-    
-    if(req.query.action == "add") {
-        sql = "INSERT INTO p_cart (bar_id) VALUES (?)";
-        sqlParams = [req.query.bar_id];
-    } else {
-        sql = "DELETE FROM p_cart WHERE bar_id = ?";
-        sqlParams = [req.query.bar_id];
-    }
-    
-    conn.connect(function(err){
-        if (err) throw err;
-        conn.query(sql, sqlParams, function(err, result){
-            if (err) throw err;
-        });//query
-    });//connect
-});//updateCart
- 
 
 // repurpose to display cart, no keyword search functionality needed
 app.get("/api/displayFavorites", function(req, res) {
