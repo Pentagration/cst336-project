@@ -132,7 +132,7 @@ app.get("/api/admin", function(req, res) {
     });
     
     
-});//updateAdmin
+});//admin
 
 //updateCart
 app.get("/api/updateCart", function(req, res) {
@@ -155,6 +155,20 @@ app.get("/api/updateCart", function(req, res) {
         });//query
     });//connect
 });//updateCart
+
+//updateAdmin
+app.get("/api/updateAdmin", function(req, res) {
+    var conn = tools.createConnection();
+    var sql = "DELETE FROM p_bars WHERE bar_id = ?";
+    var sqlParams = [req.query.bar_id];
+    
+    conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, sqlParams, function(err, result){
+            if (err) throw err;
+        });//query
+    });//connect
+});//updateAdmin
  
 
 // repurpose this for candy bar search?
