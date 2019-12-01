@@ -16,7 +16,9 @@ $(document).ready(function(){
     });
     
     // for the admin page to delete a row from the table
-    $(".delRow").on("click", function(){
+    $(document).on("click", ".delRow", function(){
+        
+        alert($(this).attr(name, "price").val());
         
         var bar_id = $(this).attr("bar_id");
         
@@ -41,13 +43,6 @@ $(document).ready(function(){
             method: "get",
             url: "/api/updateAdmin",
             data: {"bar_id":bar_id},
-            success: function(data){
-                if(data.success == true){ // if true (1)
-                    setTimeout(function(){// wait for 5 secs(2)
-                        location.reload(); // then reload the page.(3)
-                    }, 5000); 
-               }
-            }
         });
     };
     

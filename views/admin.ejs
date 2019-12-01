@@ -20,21 +20,62 @@
     
     <table class="table table-striped">
         <tr>
-            <th>ID</th><th>Name</th><th>Wrap Color</th><th>Nut</th><th>Nut Type</th><th>Size</th><th>Calories</th><th>Price</th>
+            <th width="5%">ID</th>
+            <th width="15%">Name</th>
+            <th width="10%">Wrap Color</th>
+            <th width="5%">Nut</th>
+            <th width="15%">Nut Type</th>
+            <th width="10%">Size</th>
+            <th width="10%">Calories</th>
+            <th width="10%">Price</th>
+            <th width="5%"></th>
+            <th width="5%"></th>
         </tr>
-        <% candyInfo.forEach(function(candyInfo) { %>  
-            <tr>
-                <td><%=candyInfo['bar_id']%></td>
-                <td><%=candyInfo['candy_name']%></td>
-                <td><%=candyInfo['wrap_color']%></td>
-                <td><%=candyInfo['nut']%></td>
-                <td><%=candyInfo['nut_type']%></td>
-                <td><%=candyInfo['size_oz']%> oz.</td>
-                <td><%=candyInfo['kcal']%> cal.</td>
-                <td>$<%=candyInfo['price']%></td>
-                <td><button bar_id=<%=candyInfo['bar_id']%> class="delRow btn btn-primary btn-login text-uppercase font-weight-bold mb-2">Delete Item</button></td>
-            </tr>
-        <% }) %>
     </table>
+        <% candyInfo.forEach(function(candyInfo) { %>  
+            <form class="form-inine">
+                <input type="text" value="<%=candyInfo['bar_id']%>" style="width:5%">
+                <input type="text" value="<%=candyInfo['candy_name']%>" style="width:15%">
+                <input type="text" value="<%=candyInfo['wrap_color']%>" style="width:10%">
+                <input type="text" value="<%=candyInfo['nut']%>" style="width:5%">
+                <input type="text" value="<%=candyInfo['nut_type']%>" style="width:15%">
+                <input type="text" value="<%=candyInfo['size_oz']%>" oz. style="width:10%">
+                <input type="text" value="<%=candyInfo['kcal']%>" cal. style="width:10%">
+                <input type="text" name="price" value="<%=candyInfo['price']%>" style="width:10%">
+                <input type="button" name="updateButton" value="Update Item" bar_id=<%=candyInfo['bar_id']%> class="updateItem btn btn-primary btn-login text-uppercase font-weight-bold mb-2">
+                <input type="button" name="deleteButton" value="Delete Item" bar_id=<%=candyInfo['bar_id']%> class="delRow btn btn-primary btn-login text-uppercase font-weight-bold mb-2">
+            </form>
+            <!--<button class="updateItem btn btn-primary btn-login text-uppercase font-weight-bold mb-2">Update Item</button>-->
+            <!--<button bar_id=<%=candyInfo['bar_id']%> class="delRow btn btn-primary btn-login text-uppercase font-weight-bold mb-2">Delete Item</button><br>-->
+            <!--<tr>-->
+            <!--    <td><%=candyInfo['bar_id']%></td>-->
+            <!--    <td><%=candyInfo['candy_name']%></td>-->
+            <!--    <td><%=candyInfo['wrap_color']%></td>-->
+            <!--    <td><%=candyInfo['nut']%></td>-->
+            <!--    <td><%=candyInfo['nut_type']%></td>-->
+            <!--    <td><%=candyInfo['size_oz']%> oz.</td>-->
+            <!--    <td><%=candyInfo['kcal']%> cal.</td>-->
+            <!--    <td>$<%=candyInfo['price']%></td>-->
+            <!--    <td><button bar_id=<%=candyInfo['bar_id']%> class="delRow btn btn-primary btn-login text-uppercase font-weight-bold mb-2">Delete Item</button></td>-->
+            <!--</tr>-->
+        <% }) %>
+    <!--    <tr>-->
+    <!--        <th>ID</th><th>Name</th><th>Wrap Color</th><th>Nut</th><th>Nut Type</th><th>Size</th><th>Calories</th><th>Price</th>-->
+    <!--    </tr>-->
+    <!--</table>-->
+    <br>
+    <h4>Use the form below to add a new bar:</h4>
+    <form>
+        <input type="text" name="name" placeholder="Candy bar name">
+        <input type="text" name="wrapper" placeholder="Wrapper color">
+        Contains Nuts: <select name="nuts" value="Nuts?">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        <input type="text" name="nutType" placeholder="Type of nuts">
+        <input type="text" name="size" placeholder="Size in oz">
+        <input type="text" name="cal" placeholder="Calories">
+        <input type="text" name="price" placeholder="Price">
+        <input type="button" value="Add New Item" class="newItem btn btn-primary btn-login text-uppercase font-weight-bold mb-2">
+    </form>
 
 <%- include('partials/footer.ejs') %>

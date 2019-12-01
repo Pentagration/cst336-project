@@ -57,7 +57,7 @@ app.post("/adminLogin", async function(req, res) {
         var conn = tools.createConnection();    
         conn.connect(function (err) {
             if (err) throw err;
-            var sql = "SELECT bar_id, candy_name, wrap_color, nut, nut_type, FORMAT(size_oz,2) AS size_oz, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
+            var sql = "SELECT bar_id, candy_name, wrap_color, nut, nut_type, FORMAT(size_oz,2) AS size_oz, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars ORDER BY bar_id";
             conn.query(sql, function(err, result) {
                 if (err) throw err;
                 conn.end();
@@ -84,7 +84,7 @@ app.get("/admin", tools.isAuthenticated, function(req, res) {
     var conn = tools.createConnection();    
     conn.connect(function (err) {
         if (err) throw err;
-        var sql = "SELECT bar_id, candy_name, wrap_color, nut, nut_type, FORMAT(size_oz,2) AS size_oz, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
+        var sql = "SELECT bar_id, candy_name, wrap_color, nut, nut_type, FORMAT(size_oz,2) AS size_oz, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars ORDER BY bar_id";
         conn.query(sql, function(err, result) {
             if (err) throw err;
             conn.end();
@@ -122,7 +122,7 @@ app.get("/api/admin", function(req, res) {
     var conn = tools.createConnection();    
     conn.connect(function (err) {
         if (err) throw err;
-        var sql = "SELECT bar_id, candy_name, nut, nut_type, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
+        var sql = "SELECT bar_id, candy_name, nut, nut_type, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars ORDER BY bar_id";
         conn.query(sql, function(err, result) {
             if (err) throw err;
             conn.end();
