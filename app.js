@@ -141,8 +141,8 @@ app.get("/api/updateCart", function(req, res) {
     var sqlParams;
     
     if(req.query.action == "add") {
-        sql = "INSERT INTO p_cart (bar_id) VALUES (?)";
-        sqlParams = [req.query.bar_id];
+        sql = "INSERT INTO p_cart (bar_id, price) VALUES (?,?)";
+        sqlParams = [req.query.bar_id, req.query.price];
     } else {
         sql = "DELETE FROM p_cart WHERE bar_id = ?";
         sqlParams = [req.query.bar_id];

@@ -5,13 +5,15 @@ $(document).ready(function(){
         //alert($(this).attr("bar_ID"));
         
         var bar_id = $(this).attr("bar_id");
+        var price = $(this).siblings('#price').text();
+        price=price.replace("$","");
         
         if ($(this).attr("src") == "img/cartEmpty.png"){
             $(this).attr("src", "img/cartFull.png");
-            updateCart("add", bar_id);
+            updateCart("add", bar_id, price);
         } else {
             $(this).attr("src", "img/cartEmpty.png");
-            updateCart("delete", bar_id);
+            updateCart("delete", bar_id, price);
         }
     });
     
@@ -28,12 +30,12 @@ $(document).ready(function(){
         window.location.reload();
     });
     
-    function updateCart(action, bar_id) {
+    function updateCart(action, bar_id, price) {
         console.log("UpdateCart Functions");
         $.ajax({
             method: "get",
             url: "/api/updateCart",
-            data: {"bar_id":bar_id, "action":action}
+            data: {"bar_id":bar_id, "price":price,"action":action}
         });
     };
     
