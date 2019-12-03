@@ -18,11 +18,31 @@ $(document).ready(function(){
     // for the admin page to delete a row from the table
     $(document).on("click", ".delRow", function(){
         
-        alert($(this).attr(name, "price").val());
-        
         var bar_id = $(this).attr("bar_id");
         
         updateAdmin(bar_id);
+        
+        // to reload the page so the line goes away
+        window.location.reload();
+    });
+    
+    // for the admin page to update a row in the table
+    $(document).on("click", ".updateItem", function(){
+        
+        //alert($(this).attr("bar_ID"));
+        let bar_id = ($(this).attr("bar_ID"));
+        let candy_name = ($("input[bar_id=" + bar_id + "][name='candy_name']").val());
+        let wrap_color = ($("input[bar_id=" + bar_id + "][name='wrap_color']").val());
+        let nut = ($("input[bar_id=" + bar_id + "][name='nut']").val());
+        let nut_type = ($("input[bar_id=" + bar_id + "][name='nut_type']").val());
+        let size_oz = ($("input[bar_id=" + bar_id + "][name='size_oz']").val());
+        let kcal = ($("input[bar_id=" + bar_id + "][name='kcal']").val());
+        let price = ($("input[bar_id=" + bar_id + "][name='price']").val())
+        
+        //alert($("input[bar_id=" + id + "]").val());
+        //alert($("input[bar_id=" + id + "][name='bar_name']").val());
+        
+        adminUpdateItem(candy_name, wrap_color, nut, nut_type, size_oz, kcal, price, bar_id);
         
         // to reload the page so the line goes away
         window.location.reload();
@@ -43,6 +63,22 @@ $(document).ready(function(){
             method: "get",
             url: "/api/updateAdmin",
             data: {"bar_id":bar_id},
+        });
+    };
+    
+    function adminUpdateItem(candy_name, wrap_color, nut, nut_type, size_oz, kcal, price, bar_id) {
+        
+        $.ajax({
+            method: "get",
+            url: "/api/adminUpdateItem",
+            data: { "candy_name":candy_name,
+                    "wrap_color":wrap_color,
+                    "nut":nut,
+                    "nut_type":nut_type,
+                    "size_oz":size_oz,
+                    "kcal":kcal,
+                    "price":price,
+                    "bar_id":bar_id},
         });
     };
     

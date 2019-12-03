@@ -169,6 +169,20 @@ app.get("/api/updateAdmin", function(req, res) {
         });//query
     });//connect
 });//updateAdmin
+
+//adminUpdateItem
+app.get("/api/adminUpdateItem", function(req, res) {
+    var conn = tools.createConnection();
+    var sql = "UPDATE p_bars SET candy_name = ?, wrap_color = ?, nut = ?, nut_type = ?, size_oz = ?, kcal = ?, price = ? WHERE bar_id = ?";
+    var sqlParams = [req.query.candy_name, req.query.wrap_color, req.query.nut, req.query.nut_type, req.query.size_oz, req.query.kcal, req.query.price, req.query.bar_id];
+    
+    conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, sqlParams, function(err, result){
+            if (err) throw err;
+        });//query
+    });//connect
+});//adminUpdateItem
  
 
 // repurpose this for candy bar search?
