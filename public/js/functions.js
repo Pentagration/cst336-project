@@ -58,7 +58,6 @@ $(document).ready(function(){
         }
     });
     
-    function updateCart(action, bar_id, price, qty) {
     // for the admin page to insert a row in the table
     $(document).on("click", ".newItem", function(){
         
@@ -76,7 +75,10 @@ $(document).ready(function(){
         window.location.reload();
     });
     
-    function updateCart(action, bar_id, price) {
+    //function updateCart(action, bar_id, price) {
+    // Adam commented the above out, below looked to be the right function, but 
+    // was in an odd location
+    function updateCart(action, bar_id, price, qty) {
         console.log("UpdateCart Functions");
         $.ajax({
             method: "get",
