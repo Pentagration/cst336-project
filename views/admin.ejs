@@ -18,118 +18,104 @@
 
 <h3>Current bars table</h3>
     
-    <!--<table class="table table-striped">-->
-    <!--    <tr>-->
-    <!--        <th width="5%">ID</th>-->
-    <!--        <th width="15%">Name</th>-->
-    <!--        <th width="10%">Wrap Color</th>-->
-    <!--        <th width="5%">Nut</th>-->
-    <!--        <th width="15%">Nut Type</th>-->
-    <!--        <th width="10%">Size</th>-->
-    <!--        <th width="10%">Calories</th>-->
-    <!--        <th width="10%">Price</th>-->
-    <!--        <th width="5%"></th>-->
-    <!--        <th width="5%"></th>-->
-    <!--    </tr>-->
-    <!--</table>-->
-        <form>
-            <div class="form-row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="ID" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Name" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Wrap Color" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Nut" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Nut Type" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Size" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Calories" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Price" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Update" disabled>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Delete" disabled>
-                </div>
-            </div>
-        </form>
-        
-        <% candyInfo.forEach(function(candyInfo) { %>  
-            <form>
-                <div class="form-row">
-                    <div class="col">
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="bar_id" value="<%=candyInfo['bar_id']%>" disabled>
-                    </div>
-                    <div calss="col">
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="candy_name" value="<%=candyInfo['candy_name']%>">
-                    </div>
-                    <div class="col">
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="wrap_color" value="<%=candyInfo['wrap_color']%>">
-                    </div>    
-                    <div class="col">
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="nut" value="<%=candyInfo['nut']%>">
-                    </div>    
-                    <div class="col">    
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="nut_type" value="<%=candyInfo['nut_type']%>">
-                    </div>
-                    <div class="col">
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="size_oz" value="<%=candyInfo['size_oz']%>" oz.>
-                    </div>
-                    <div class="col">
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="kcal" value="<%=candyInfo['kcal']%>" cal.>
-                    </div>
-                    <div class="col">
-                        <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="price" value="<%=candyInfo['price']%>">
-                    </div>
-                    <div class="col">
-                        <input type="button" name="updateButton" value="Update Item" bar_id=<%=candyInfo['bar_id']%> class="updateItem btn btn-primary btn-login text-uppercase font-weight-bold mb-2">
-                    </div>
-                    <div class="col">
-                        <input type="button" name="deleteButton" value="Delete Item" bar_id=<%=candyInfo['bar_id']%> class="delRow btn btn-primary btn-login text-uppercase font-weight-bold mb-2">
-                    </div>
-                </div>
-            </form>
-        <% }) %>
-    <br>
-    <h4>Use the form below to add a new bar:</h4>
     <form>
         <div class="form-row">
             <div class="col">
-                <input type="text" name="name" class="form-control" placeholder="Candy bar name">
+                <input type="text" class="form-control" placeholder="ID" disabled>
             </div>
             <div class="col">
-                <input type="text" name="wrapper" class="form-control" placeholder="Wrapper color">
+                <input type="text" class="form-control" placeholder="Name" disabled>
             </div>
             <div class="col">
-                <select name="nuts" class="form-control">
+                <input type="text" class="form-control" placeholder="Wrap Color" disabled>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Nut" disabled>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Nut Type" disabled>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Size" disabled>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Calories" disabled>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Price" disabled>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Update" disabled>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Delete" disabled>
+            </div>
+        </div>
+    </form>
+    
+    <% candyInfo.forEach(function(candyInfo) { %>  
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="bar_id" value="<%=candyInfo['bar_id']%>" disabled>
+                </div>
+                <div calss="col">
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="candy_name" value="<%=candyInfo['candy_name']%>">
+                </div>
+                <div class="col">
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="wrap_color" value="<%=candyInfo['wrap_color']%>">
+                </div>    
+                <div class="col">
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="nut" value="<%=candyInfo['nut']%>">
+                </div>    
+                <div class="col">    
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="nut_type" value="<%=candyInfo['nut_type']%>">
+                </div>
+                <div class="col">
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="size_oz" value="<%=candyInfo['size_oz']%>" oz.>
+                </div>
+                <div class="col">
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="kcal" value="<%=candyInfo['kcal']%>" cal.>
+                </div>
+                <div class="col">
+                    <input type="text" bar_id=<%=candyInfo['bar_id']%> class="form-control" name="price" value="<%=candyInfo['price']%>">
+                </div>
+                <div class="col">
+                    <input type="button" name="updateButton" value="Update Item" bar_id=<%=candyInfo['bar_id']%> class="updateItem btn btn-primary btn-login text-uppercase font-weight-bold mb-2">
+                </div>
+                <div class="col">
+                    <input type="button" name="deleteButton" value="Delete Item" bar_id=<%=candyInfo['bar_id']%> class="delRow btn btn-primary btn-login text-uppercase font-weight-bold mb-2">
+                </div>
+            </div>
+        </form>
+    <% }) %>
+    <br>
+    <h4>Use the form below to add a new bar:</h4>
+    <form name="insertForm">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" ftype="new" name="candy_name" class="form-control" placeholder="Candy bar name">
+            </div>
+            <div class="col">
+                <input type="text" ftype="new" name="wrap_color" class="form-control" placeholder="Wrapper color">
+            </div>
+            <div class="col">
+                <select id="nut" ftype="new" name="nut" class="form-control">
                     <option value="yes">Contains Nuts</option>
                     <option value="no">No Nuts</option>
                 </select>
             </div>
             <div class="col">
-                <input type="text" name="nutType" class="form-control" placeholder="Type of nuts">
+                <input type="text" ftype="new" name="nut_type" class="form-control" placeholder="Type of nuts">
             </div>
             <div class="col">
-                <input type="text" name="size" class="form-control" placeholder="Size in oz">
+                <input type="text" ftype="new" name="size_oz" class="form-control" placeholder="Size in oz">
             </div>
             <div class="col">
-                <input type="text" name="cal" class="form-control" placeholder="Calories">
+                <input type="text" ftype="new" name="kcal" class="form-control" placeholder="Calories">
             </div>
             <div class="col">
-                <input type="text" name="price" class="form-control" placeholder="Price">
+                <input type="text" ftype="new" name="price" class="form-control" placeholder="Price">
             </div>
             <div class="col">
                 <input type="button" value="Add New Item" class="newItem btn btn-primary btn-login text-uppercase font-weight-bold mb-2">

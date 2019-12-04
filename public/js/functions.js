@@ -27,10 +27,10 @@ $(document).ready(function(){
         // to reload the page so the line goes away
         window.location.reload();
     });
+    
     // for the admin page to update a row in the table
     $(document).on("click", ".updateItem", function(){
         
-        //alert($(this).attr("bar_ID"));
         let bar_id = ($(this).attr("bar_ID"));
         let candy_name = ($("input[bar_id=" + bar_id + "][name='candy_name']").val());
         let wrap_color = ($("input[bar_id=" + bar_id + "][name='wrap_color']").val());
@@ -40,10 +40,24 @@ $(document).ready(function(){
         let kcal = ($("input[bar_id=" + bar_id + "][name='kcal']").val());
         let price = ($("input[bar_id=" + bar_id + "][name='price']").val())
         
-        //alert($("input[bar_id=" + id + "]").val());
-        //alert($("input[bar_id=" + id + "][name='bar_name']").val());
-        
         adminUpdateItem(candy_name, wrap_color, nut, nut_type, size_oz, kcal, price, bar_id);
+        
+        // to reload the page so the line goes away
+        window.location.reload();
+    });
+    
+    // for the admin page to insert a row in the table
+    $(document).on("click", ".newItem", function(){
+        
+        let candy_name = ($('input[ftype="new"][name="candy_name"]').val());
+        let wrap_color = ($('input[ftype="new"][name="wrap_color"]').val());
+        let nut = ($("#nut").val());
+        let nut_type = ($('input[ftype="new"][name="nut_type"]').val());
+        let size_oz = ($('input[ftype="new"][name="size_oz"]').val());
+        let kcal = ($('input[ftype="new"][name="kcal"]').val());
+        let price = ($('input[ftype="new"][name="price"]').val());
+        
+        adminNewItem(candy_name, wrap_color, nut, nut_type, size_oz, kcal, price);
         
         // to reload the page so the line goes away
         window.location.reload();
@@ -80,6 +94,21 @@ $(document).ready(function(){
                     "kcal":kcal,
                     "price":price,
                     "bar_id":bar_id},
+        });
+    };
+    
+    function adminNewItem(candy_name, wrap_color, nut, nut_type, size_oz, kcal, price) {
+        
+        $.ajax({
+            method: "get",
+            url: "/api/adminNewItem",
+            data: { "candy_name":candy_name,
+                    "wrap_color":wrap_color,
+                    "nut":nut,
+                    "nut_type":nut_type,
+                    "size_oz":size_oz,
+                    "kcal":kcal,
+                    "price":price},
         });
     };
     

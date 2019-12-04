@@ -65,7 +65,6 @@ app.post("/adminLogin", async function(req, res) {
                 );
             });
         });
-        //res.render("admin");
     }else {
         res.render("adminlogin", {"loginError":true});
     }
@@ -93,7 +92,6 @@ app.get("/admin", tools.isAuthenticated, function(req, res) {
             //console.log(result);
         });
     });
-    //res.render("admin.ejs");
 });//admin
 
     
@@ -107,7 +105,6 @@ app.get('/cart', function(req, res) {
             conn.end();
             res.render("cart.ejs", {"cartInfo":result}
             );
-            //console.log(result);
         });
     });
 });
@@ -183,6 +180,20 @@ app.get("/api/adminUpdateItem", function(req, res) {
         });//query
     });//connect
 });//adminUpdateItem
+
+//adminNewItem
+app.get("/api/adminNewItem", function(req, res) {
+    var conn = tools.createConnection();
+    var sql = "INSERT INTO p_bars (candy_name, wrap_color, nut, nut_type, size_oz, kcal, price) VALUES (?,?,?,?,?,?,?)";
+    var sqlParams = [req.query.candy_name, req.query.wrap_color, req.query.nut, req.query.nut_type, req.query.size_oz, req.query.kcal, req.query.price];
+    
+    conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, sqlParams, function(err, result){
+            if (err) throw err;
+        });//query
+    });//connect
+});//adminNewItem
  
 
 // repurpose this for candy bar search?
