@@ -1,5 +1,7 @@
 //CLICK ON THE SHOPPING CART TO ADD / CLICK AGAIN TO DELETE
 $(document).ready(function(){
+    
+    
     $(".cartIcon").on("click", function(){
         
         //alert($(this).attr("bar_ID"));
@@ -10,10 +12,10 @@ $(document).ready(function(){
         
         if ($(this).attr("src") == "img/cartEmpty.png"){
             $(this).attr("src", "img/cartFull.png");
-            updateCart("add", bar_id, price);
+            updateCart("add", bar_id, price, 1);// default to one quantity
         } else {
             $(this).attr("src", "img/cartEmpty.png");
-            updateCart("delete", bar_id, price);
+            updateCart("delete", bar_id, price, 0);
         }
     });
     
@@ -49,12 +51,22 @@ $(document).ready(function(){
         window.location.reload();
     });
     
-    function updateCart(action, bar_id, price) {
+    $("#quantity").on('keyup', function (e) {
+        let qty = $("#quantity").val();
+        let price = $(this).parent().siblings('#price').text();
+        let bar_id= $(this).parent().siblings('#bar_id').text();
+        price=price.replace("$","");
+        if (e.keyCode === 13) {
+            updateCart("update", bar_id, price, qty);
+        }
+    });
+    
+    function updateCart(action, bar_id, price, qty) {
         console.log("UpdateCart Functions");
         $.ajax({
             method: "get",
             url: "/api/updateCart",
-            data: {"bar_id":bar_id, "price":price,"action":action}
+            data: {"bar_id":bar_id, "price":price,"qty":qty,"action":action}
         });
     };
     
@@ -86,5 +98,6 @@ $(document).ready(function(){
     //Button to update cart on cart.ejs
     function updateCartBtn() {
         
-        }
+        };
+        
 });

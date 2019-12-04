@@ -143,9 +143,12 @@ app.get("/api/updateCart", function(req, res) {
     if(req.query.action == "add") {
         sql = "INSERT INTO p_cart (bar_id, price) VALUES (?,?)";
         sqlParams = [req.query.bar_id, req.query.price];
-    } else {
+    } else if (req.query.action == "delete") {
         sql = "DELETE FROM p_cart WHERE bar_id = ?";
         sqlParams = [req.query.bar_id];
+    } else if(req.query.action == "update") {
+        sql="UPDATE p_cart SET quantity = ? WHERE bar_id= ?";
+        sqlParams = [req.query.qty, req.query.bar_id];
     }
     
     conn.connect(function(err){
