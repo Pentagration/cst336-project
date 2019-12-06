@@ -36,14 +36,14 @@
                         <td id="bar_id" style="display: none; height: 100px;"><%=cartInfo['bar_id']%></td>
                         <td><img src=img/bars/<%=cartInfo['bar_id']%>.jpg alt="Item" width="80"><%=cartInfo['candy_name']%></td>
                         <td id="price">$<%=cartInfo['price'].toFixed(2)%></td>
-                        <td><input type="number" min="1" max="5" id="quantity" value= "<%=cartInfo['quantity']%>"></td>
+                        <td id="qty"><input type="number" min="1" max="5" id="quantity" value= "<%=cartInfo['quantity']%>"></td>
                         <td id="total">$<%=(cartInfo['price']*cartInfo['quantity']).toFixed(2)%></td>
                     </tr>
                 <% }) %>
             </table>
 
             <div id="summary" align="center">
-                <button id="cartButton" class="btn btn-primary btn-login text-uppercase font-weight-bold mb-2" action="/updateCartBtn">Update Cart</button>
+                <button id="cartButton" class="btn btn-primary btn-login text-uppercase font-weight-bold mb-2">Update Cart</button>
                 <h5>Subtotal:</h5>
                 <h5 class="subtotal" id="subtotal"></h5>
                 <h3>Total:</h3>
