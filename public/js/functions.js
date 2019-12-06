@@ -127,6 +127,51 @@ $(document).ready(function(){
         });
     };
     
+    $("#priceReport").on("click", function(){
+        //clear prior message
+        $("#reportOutput").html("");
+        
+        $.ajax({
+            method: "get",
+            url: "/api/priceReport",
+            success: function(result,status) {
+    
+                $("#reportOutput").html("The average price of all bars is $" + result[0].avgPrice);
+            } 
+        });//ajax
+    });//report
+    
+    $("#calReport").on("click", function(){
+        //clear prior message
+        $("#reportOutput").html("");
+        
+        $.ajax({
+            method: "get",
+            url: "/api/calReport",
+            success: function(result,status) {
+    
+                $("#reportOutput").html("The average calories of all bars is " + result[0].avgCal);
+            } 
+        });//ajax
+    });//report
+    
+    $("#colorReport").on("click", function(){
+        //clear prior message
+        $("#reportOutput").html("<table id='reportTable' class='table table-striped'><tr><th>Color</th><th>Count</th></tr><br>");
+        
+        $.ajax({
+            method: "get",
+            url: "/api/colorReport",
+            success: function(result,status) {
+    
+                
+                for (let i = 0; i < result.length; i++) {
+                $("#reportTable").append("<tr><td>" + result[i].color + "</td><td>" + result[i].count + "</td></tr><br></table>");
+                }
+            } 
+        });//ajax
+    });//report
+    
     //Button to update cart on cart.ejs
     function updateCartBtn() {
         

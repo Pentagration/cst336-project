@@ -197,6 +197,47 @@ app.get("/api/adminNewItem", function(req, res) {
         });//query
     });//connect
 });//adminNewItem
+
+//reports
+app.get("/api/priceReport", function(req, res) {
+    var conn = tools.createConnection();
+    var sql = "SELECT FORMAT(AVG(price), 2) AS avgPrice FROM cst336_db026.p_bars";
+    
+    conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, function(err, result){
+            if (err) throw err;
+            conn.end();
+            res.send(result);
+        });//query
+    });//connect
+});
+app.get("/api/calReport", function(req, res) {
+    var conn = tools.createConnection();
+    var sql = "SELECT FORMAT(AVG(kcal), 2) AS avgCal FROM cst336_db026.p_bars";
+    
+    conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, function(err, result){
+            if (err) throw err;
+            conn.end();
+            res.send(result);
+        });//query
+    });//connect
+});
+app.get("/api/colorReport", function(req, res) {
+    var conn = tools.createConnection();
+    var sql = "SELECT wrap_color as color, count(*) as count FROM cst336_db026.p_bars group by wrap_color;";
+    
+    conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, function(err, result){
+            if (err) throw err;
+            conn.end();
+            res.send(result);
+        });//query
+    });//connect
+});//reports
  
 
 // repurpose this for candy bar search?
