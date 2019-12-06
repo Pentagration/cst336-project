@@ -143,10 +143,7 @@ app.get("/api/updateCart", function(req, res) {
     } else if (req.query.action == "delete") {
         sql = "DELETE FROM p_cart WHERE bar_id = ?";
         sqlParams = [req.query.bar_id];
-    } else if(req.query.action == "update") {
-        sql="UPDATE p_cart SET quantity = ? WHERE bar_id= ?";
-        sqlParams = [req.query.qty, req.query.bar_id];
-    }
+    } 
     
     conn.connect(function(err){
         if (err) throw err;
@@ -155,6 +152,24 @@ app.get("/api/updateCart", function(req, res) {
         });//query
     });//connect
 });//updateCart
+
+app.get("/api/updateCartBtn", function(req, res){
+    var conn = tools.createConnection();
+    var sql;
+    var sqlParams;
+    let i = 0;
+    for (i =0; i < req.query.bar_id.length; i++){
+        //sql="UPDATE p_cart SET quantity = ? WHERE bar_id= ?";
+        //sqlParams = [req.query.qty, req.query.bar_id];
+        /*
+        conn.connect(function(err){
+        if (err) throw err;
+        conn.query(sql, sqlParams, function(err, result){
+            if (err) throw err;
+        });//query
+    });//connect*/
+    }//for
+});//updateCartBtn
 
 //updateAdmin
 app.get("/api/updateAdmin", function(req, res) {

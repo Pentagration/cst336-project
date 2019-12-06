@@ -48,15 +48,6 @@ $(document).ready(function(){
         window.location.reload();
     });
     
-    $("#quantity").on('keyup', function (e) {
-        let qty = $("#quantity").val();
-        let price = $(this).parent().siblings('#price').text();
-        let bar_id= $(this).parent().siblings('#bar_id').text();
-        price=price.replace("$","");
-        if (e.keyCode === 13) {
-            updateCart("update", bar_id, price, qty);
-        }
-    });
     
     // for the admin page to insert a row in the table
     $(document).on("click", ".newItem", function(){
@@ -74,6 +65,27 @@ $(document).ready(function(){
         // to reload the page so the line goes away
         window.location.reload();
     });
+    
+    //Button to update cart on cart.ejs
+    $("#cartButton").on("click", function(){
+        let bar_id = [];
+        let qty = [];
+        $("tr").each(function(index,element){
+           //alert($(element).children("#bar_id").text()); 
+            if (index != 0){
+                bar_id.push($(element).children("#bar_id").text());
+                qty.push($(element).children("#qty").children("#quantity").val());
+            }
+        });
+        
+        $.ajax({
+            method: "get",
+            url: "/api/updateCartBtn",
+            data: { "bar_id":bar_id,
+                    "qty":qty
+            }
+        });//ajax
+    });//cartbutton
     
     //function updateCart(action, bar_id, price) {
     // Adam commented the above out, below looked to be the right function, but 
@@ -176,5 +188,4 @@ $(document).ready(function(){
     function updateCartBtn() {
         
         };
-        
 });
