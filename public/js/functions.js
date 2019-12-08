@@ -281,9 +281,9 @@ $(document).ready(function(){
             for (let i =0; i< length; i++) {
                 
                 if (candyInfo[i].quantity > 0) {
-                    cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="right">';
+                    cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="bottom-right">';
                 } else {
-                    cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
+                    cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="bottom-right">';
                 }
 
                 $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
