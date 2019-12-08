@@ -194,8 +194,14 @@ $(document).ready(function(){
         $.ajax({
             method: "get",
             url: "/api/noNuts",
-            success: function(candyInfo,status) {
-                
+            success: function(results,status) {
+            
+            var candyInfo = results;
+            var length = results.length;
+            
+            for (let i =0; i< length; i++) {
+                $("#result").append(" "+candyInfo[i].candy_name+" ");
+            }
                 
             }
         })

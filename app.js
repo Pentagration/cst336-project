@@ -317,10 +317,7 @@ app.get("/api/noNuts", function(req, res) {
         conn.query(sql, function(err, results) {
             if (err) throw err;
             conn.end();
-            res.render("index", {"candyInfo":results});
-            
-            console.log(results);
-            
+            res.send(results);
         });//query
         
     });//connect
