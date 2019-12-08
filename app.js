@@ -304,6 +304,29 @@ app.get("/api/displayFavorites", function(req, res) {
     
 });//display favorites
 
+
+//NO NUTS START
+app.get("/api/noNuts", function(req, res) {
+   
+   var conn = tools.createConnection();
+   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id WHERE nut='no' ORDER BY bar_id";
+   
+   conn.connect(function(err){
+        
+        if (err) throw err;
+        conn.query(sql, function(err, results) {
+            if (err) throw err;
+            conn.end();
+            res.render("index", {"candyInfo":results});
+            
+            console.log(results);
+            
+        });//query
+        
+    });//connect
+   
+});
+
 // server listener
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Express Server is running..")

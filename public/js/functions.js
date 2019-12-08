@@ -188,4 +188,17 @@ $(document).ready(function(){
     function updateCartBtn() {
         
         };
+        
+    //No Nuts Search
+    $("#noNuts").on("click", function(){
+        $.ajax({
+            method: "get",
+            url: "/api/noNuts",
+            success: function(candyInfo,status) {
+                
+                
+            }
+        })
+    });//NoNuts END
+            
 });
