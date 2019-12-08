@@ -305,7 +305,7 @@ app.get("/api/displayFavorites", function(req, res) {
 });//display favorites
 
 
-//NO NUTS START
+//noNuts START
 app.get("/api/noNuts", function(req, res) {
    
    var conn = tools.createConnection();
@@ -322,7 +322,46 @@ app.get("/api/noNuts", function(req, res) {
         
     });//connect
    
-});
+});//noNuts END
+
+//nuts START
+app.get("/api/nuts", function(req, res) {
+   
+   var conn = tools.createConnection();
+   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id WHERE nut='yes' ORDER BY bar_id";
+   
+   conn.connect(function(err){
+        
+        if (err) throw err;
+        conn.query(sql, function(err, results) {
+            if (err) throw err;
+            conn.end();
+            res.send(results);
+        });//query
+        
+    });//connect
+   
+});//noNuts END
+
+//nuts START
+app.get("/api/showAll", function(req, res) {
+   
+   var conn = tools.createConnection();
+   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id ORDER BY bar_id";
+   
+   conn.connect(function(err){
+        
+        if (err) throw err;
+        conn.query(sql, function(err, results) {
+            if (err) throw err;
+            conn.end();
+            res.send(results);
+        });//query
+        
+    });//connect
+   
+});//showAll END
+
 
 // server listener
 app.listen(process.env.PORT, process.env.IP, function(){
