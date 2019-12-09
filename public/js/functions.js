@@ -323,6 +323,83 @@ $(document).ready(function(){
         });//ajax
     });//showAll END
     
+    //inventory Search
+    $("#inventory").on("click", function(){
+        $.ajax({
+            method: "get",
+            url: "/api/inventory",
+            success: function(results,status) {
+            
+            var candyInfo = results;
+            var length = results.length;
+            
+            $("#result").html("");
+            
+            for (let i =0; i< length; i++) {
+                
+                if (candyInfo[i].quantity > 0) {
+                    cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="bottom-right">';
+                } else {
+                    cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="bottom-right">';
+                }
+
+                $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
+            + '<div class="card h-100">'
+            + '<img class="card-img-top" src="img/bars/'+candyInfo[i].bar_id+'.jpg">'
+            + '<div class="card-body">'
+            + '<h4 class="card-title">'+candyInfo[i].candy_name+''
+            + '</h4><h5 id="price">$'+candyInfo[i].price+'</h5>'
+            + '<ul class="card-text">'
+            + '<li id="nuts"><b>Nuts: </b>'+candyInfo[i].nut+' </li>'
+            + '<li id="nutType"><b>Nut Type: </b>'+candyInfo[i].nut_type+'</li>'
+            + '<li id="calories"><b>Calories: </b>'+candyInfo[i].kcal+'</li>'
+            + '<li id="inventoryQty"><b>Inventory: </b>'+candyInfo[i].qty_instock+'</li>'
+            + '</ul>'+cart+'</div></div></div>');
+            
+            }//forEach
+                
+            }//success
+        });//ajax
+    });//inventory END
+    
+    //wrapcolor Search
+    $("#color").on("click", function(){
+        $.ajax({
+            method: "get",
+            url: "/api/color",
+            success: function(results,status) {
+            
+            var candyInfo = results;
+            var length = results.length;
+            
+            $("#result").html("");
+            
+            for (let i =0; i< length; i++) {
+                
+                if (candyInfo[i].quantity > 0) {
+                    cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="bottom-right">';
+                } else {
+                    cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="bottom-right">';
+                }
+
+                $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
+            + '<div class="card h-100">'
+            + '<img class="card-img-top" src="img/bars/'+candyInfo[i].bar_id+'.jpg">'
+            + '<div class="card-body">'
+            + '<h4 class="card-title">'+candyInfo[i].candy_name+''
+            + '</h4><h5 id="price">$'+candyInfo[i].price+'</h5>'
+            + '<ul class="card-text">'
+            + '<li id="nuts"><b>Nuts: </b>'+candyInfo[i].nut+' </li>'
+            + '<li id ="nutType"><b>Nut Type: </b>'+candyInfo[i].nut_type+'</li>'
+            + '<li id= "calories"><b>Calories: </b>'+candyInfo[i].kcal+'</li>'
+            + '</ul>'+cart+'</div></div></div>');
+            
+            }//forEach
+                
+            }//success
+        });//ajax
+    });//wrapcolor END
+    
     
             
 });

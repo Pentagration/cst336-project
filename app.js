@@ -349,7 +349,7 @@ app.get("/api/nuts", function(req, res) {
    
 });//noNuts END
 
-//nuts START
+//showAll START
 app.get("/api/showAll", function(req, res) {
    
    var conn = tools.createConnection();
@@ -367,6 +367,45 @@ app.get("/api/showAll", function(req, res) {
     });//connect
    
 });//showAll END
+
+//inventory START
+app.get("/api/inventory", function(req, res) {
+   
+   var conn = tools.createConnection();
+   var sql = "SELECT p_inventory.bar_id, qty_instock, p_bars.candy_name, p_bars.nut, p_bars.nut_type, p_bars.kcal, p_cart.quantity, FORMAT(p_bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars ON p_bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart ON p_cart.bar_id = p_inventory.bar_id";
+   
+   conn.connect(function(err){
+        
+        if (err) throw err;
+        conn.query(sql, function(err, results) {
+            if (err) throw err;
+            conn.end();
+            res.send(results);
+        });//query
+        
+    });//connect
+   
+});//inventory END
+
+
+//color START
+app.get("/api/color", function(req, res) {
+   
+   var conn = tools.createConnection();
+   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id WHERE wrap_color='red' ORDER BY bar_id";
+   
+   conn.connect(function(err){
+        
+        if (err) throw err;
+        conn.query(sql, function(err, results) {
+            if (err) throw err;
+            conn.end();
+            res.send(results);
+        });//query
+        
+    });//connect
+   
+});//color END
 
 
 // server listener
