@@ -2,7 +2,7 @@
 $(document).ready(function(){
     
     setTotal();
-    $(".cartIcon").on("click", function(){
+    $(document).on("click", ".cartIcon", function(){
         
         //alert($(this).attr("bar_ID"));
         
