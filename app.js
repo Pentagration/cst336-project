@@ -155,20 +155,26 @@ app.get("/api/updateCart", function(req, res) {
 
 app.get("/api/updateCartBtn", function(req, res){
     var conn = tools.createConnection();
-    var sql;
-    var sqlParams;
+    var sql="INSERT INTO p_cart (bar_id, quantity, row_total) VALUES ";
+    var sqlParams = [];
     let i = 0;
     for (i =0; i < req.query.bar_id.length; i++){
-        //sql="UPDATE p_cart SET quantity = ? WHERE bar_id= ?";
-        //sqlParams = [req.query.qty, req.query.bar_id];
-        /*
-        conn.connect(function(err){
-        if (err) throw err;
-        conn.query(sql, sqlParams, function(err, result){
-            if (err) throw err;
-        });//query
-    });//connect*/
+        if (i == req.query.bar_id.length - 1)
+            sql=sql.concat("(?,?,?)");
+        else
+            sql=sql.concat("(?,?,?),");
+        sqlParams.push(req.query.bar_id[i]);
+        sqlParams.push(req.query.qty[i]);
+        sqlParams.push((req.query.qty[i]*req.query.price[i]).toString());
+        
     }//for
+    sql=sql.concat("ON DUPLICATE KEY UPDATE bar_id=VALUES(bar_id), quantity=VALUES(quantity), row_total=VALUES(row_total);");
+    conn.connect(function(err){
+    if (err) throw err;
+    conn.query(sql, sqlParams, function(err, result){
+        if (err) throw err;
+    });//query
+    });//connect
 });//updateCartBtn
 
 //updateAdmin

@@ -70,9 +70,13 @@ $(document).ready(function(){
     $("#cartButton").on("click", function(){
         let bar_id = [];
         let qty = [];
+        let price=[];
+        let total=[];
         $("tr").each(function(index,element){
            //alert($(element).children("#bar_id").text()); 
             if (index != 0){
+                total.push($(element).children("#total").text().replace("$",""));
+                price.push($(element).children("#price").text().replace("$",""));
                 bar_id.push($(element).children("#bar_id").text());
                 qty.push($(element).children("#qty").children("#quantity").val());
             }
@@ -82,9 +86,12 @@ $(document).ready(function(){
             method: "get",
             url: "/api/updateCartBtn",
             data: { "bar_id":bar_id,
-                    "qty":qty
+                    "qty":qty,
+                    "total":total,
+                    "price":price
             }
-        });//ajax
+        });
+        location.reload();
     });//cartbutton
     
     //function updateCart(action, bar_id, price) {
