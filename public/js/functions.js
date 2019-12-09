@@ -1,7 +1,7 @@
 //CLICK ON THE SHOPPING CART TO ADD / CLICK AGAIN TO DELETE
 $(document).ready(function(){
     
-    
+    setTotal();
     $(".cartIcon").on("click", function(){
         
         //alert($(this).attr("bar_ID"));
@@ -94,6 +94,17 @@ $(document).ready(function(){
         location.reload();
     });//cartbutton
     
+    function setTotal(){
+        let subtotal=0;
+        $("tr").each(function(index,element){
+            if(index != 0){
+                subtotal+=Number($(element).children("#total").text().replace("$",""));
+            }//if
+        });
+        $("#summary").children("#cart_subtotal").text("$"+subtotal.toFixed(2));
+        $("#summary").children("#cart_total").text("$"+(subtotal*1.15).toFixed(2));
+    };//setTotal
+    
     //function updateCart(action, bar_id, price) {
     // Adam commented the above out, below looked to be the right function, but 
     // was in an odd location
@@ -104,6 +115,7 @@ $(document).ready(function(){
             url: "/api/updateCart",
             data: {"bar_id":bar_id, "price":price,"qty":qty,"action":action}
         });
+        
     };
     
     function updateAdmin(bar_id) {
