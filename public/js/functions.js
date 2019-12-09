@@ -13,7 +13,7 @@ $(document).ready(function(){
         if ($(this).attr("src") == "img/cartEmpty.png"){
             $(this).attr("src", "img/cartFull.png");
             updateCart("add", bar_id, price, 1);// default to one quantity
-        } else {
+        } else if ($(this).attr("src") == "img/cartFull.png") {
             $(this).attr("src", "img/cartEmpty.png");
             updateCart("delete", bar_id, price, 0);
         }
