@@ -60,7 +60,9 @@
                   <li id= "calories"><b>Calories: </b><%=candyInfo['kcal']%></li>
                 </ul>
     
-                <% if(candyInfo['quantity'] > 0){ %>
+                <% if(candyInfo['qty_instock'] == 0) { %>
+                  <img bar_id=<%=candyInfo['bar_id']%> class="cartIcon" src="img/outofstock.png" width="20" align="right">
+                <% } else if(candyInfo['quantity'] > 0){ %>
                   <img bar_id=<%=candyInfo['bar_id']%> class="cartIcon" src="img/cartFull.png" width="20" align="right">
                 <% } else{ %>  
                   <img bar_id=<%=candyInfo['bar_id']%> class="cartIcon" src="img/cartEmpty.png" width="20" align="right">

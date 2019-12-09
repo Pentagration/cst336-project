@@ -23,7 +23,8 @@ app.get('/', function(req, res) {
     conn.connect(function (err) {
         if (err) throw err;
         //var sql = "SELECT bar_id, candy_name, nut, nut_type, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
-        var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id ORDER BY bar_id"
+        var sql = "SELECT bars.bar_id, p_inventory.qty_instock, bars.candy_name, bars.nut, bars.nut_type, kcal, cart.quantity AS quantity, FORMAT(bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars bars ON bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart cart ON cart.bar_id = p_inventory.bar_id ORDER BY bar_id"
+        
         conn.query(sql, function(err, result) {
             if (err) throw err;
             conn.end();
@@ -315,7 +316,7 @@ app.get("/api/displayFavorites", function(req, res) {
 app.get("/api/noNuts", function(req, res) {
    
    var conn = tools.createConnection();
-   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id WHERE nut='no' ORDER BY bar_id";
+   var sql = "SELECT bars.bar_id, p_inventory.qty_instock, bars.candy_name, bars.nut, bars.nut_type, kcal, cart.quantity AS quantity, FORMAT(bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars bars ON bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart cart ON cart.bar_id = p_inventory.bar_id WHERE nut='no' ORDER BY bar_id";
    
    conn.connect(function(err){
         
@@ -334,7 +335,7 @@ app.get("/api/noNuts", function(req, res) {
 app.get("/api/nuts", function(req, res) {
    
    var conn = tools.createConnection();
-   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id WHERE nut='yes' ORDER BY bar_id";
+   var sql = "SELECT bars.bar_id, p_inventory.qty_instock, bars.candy_name, bars.nut, bars.nut_type, kcal, cart.quantity AS quantity, FORMAT(bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars bars ON bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart cart ON cart.bar_id = p_inventory.bar_id WHERE nut='yes' ORDER BY bar_id";
    
    conn.connect(function(err){
         
@@ -353,7 +354,7 @@ app.get("/api/nuts", function(req, res) {
 app.get("/api/showAll", function(req, res) {
    
    var conn = tools.createConnection();
-   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id ORDER BY bar_id";
+   var sql = "SELECT bars.bar_id, p_inventory.qty_instock, bars.candy_name, bars.nut, bars.nut_type, kcal, cart.quantity AS quantity, FORMAT(bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars bars ON bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart cart ON cart.bar_id = p_inventory.bar_id ORDER BY bar_id";
    
    conn.connect(function(err){
         
@@ -372,7 +373,7 @@ app.get("/api/showAll", function(req, res) {
 app.get("/api/inventory", function(req, res) {
    
    var conn = tools.createConnection();
-   var sql = "SELECT p_inventory.bar_id, qty_instock, p_bars.candy_name, p_bars.nut, p_bars.nut_type, p_bars.kcal, p_cart.quantity, FORMAT(p_bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars ON p_bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart ON p_cart.bar_id = p_inventory.bar_id";
+   var sql = "SELECT bars.bar_id, p_inventory.qty_instock, bars.candy_name, bars.nut, bars.nut_type, kcal, cart.quantity AS quantity, FORMAT(bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars bars ON bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart cart ON cart.bar_id = p_inventory.bar_id ORDER BY bar_id";
    
    conn.connect(function(err){
         
@@ -392,7 +393,7 @@ app.get("/api/inventory", function(req, res) {
 app.get("/api/color", function(req, res) {
    
    var conn = tools.createConnection();
-   var sql = "SELECT bars.bar_id, bars.candy_name, nut, nut_type, kcal, FORMAT(bars.price,2) AS price, quantity FROM cst336_db026.p_bars bars LEFT JOIN p_cart cart ON bars.bar_id = cart.bar_id WHERE wrap_color='red' ORDER BY bar_id";
+   var sql = "SELECT bars.bar_id, p_inventory.qty_instock, bars.candy_name, bars.nut, bars.nut_type, kcal, cart.quantity AS quantity, FORMAT(bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars bars ON bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart cart ON cart.bar_id = p_inventory.bar_id WHERE wrap_color='red' ORDER BY bar_id";
    
    conn.connect(function(err){
         
