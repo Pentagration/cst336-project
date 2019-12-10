@@ -104,10 +104,6 @@ app.get('/cart', function(req, res) {
     });
 });
 
-// app.get("/cart", function(req, res) {
-//     res.render("cart.ejs");
-// });//cart
-
 
 app.get("/api/admin", function(req, res) {
     alert("api/updateAdmin");
