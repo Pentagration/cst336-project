@@ -3,9 +3,7 @@ $(document).ready(function(){
     
     setTotal();
     $(document).on("click", ".cartIcon", function(){
-        
-        //alert($(this).attr("bar_ID"));
-        
+    
         var bar_id = $(this).attr("bar_id");
         var price = $(this).siblings('#price').text();
         price=price.replace("$","");
@@ -224,11 +222,11 @@ $(document).ready(function(){
             for (let i =0; i< length; i++) {
                 
                 if (candyInfo[i].qty_instock == 0) {
-                    cart = '<img class="cartIcon" src="img/outofstock.png" width="20" align="right">';
+                    cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/outofstock.png" width="20" align="right">';
                 } else if (candyInfo[i].quantity > 0) {
-                    cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="right">';
+                    cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartFull.png" width="20" align="right">';
                 } else {
-                    cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
+                    cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
                 }
 
                 $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
@@ -263,13 +261,13 @@ $(document).ready(function(){
             
             for (let i =0; i< length; i++) {
                 
-            if (candyInfo[i].qty_instock == 0) {
-                cart = '<img class="cartIcon" src="img/outofstock.png" width="20" align="right">';
-            } else if (candyInfo[i].quantity > 0) {
-                cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="right">';
-            } else {
-                cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
-            }
+                if (candyInfo[i].qty_instock == 0) {
+                    cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/outofstock.png" width="20" align="right">';
+                } else if (candyInfo[i].quantity > 0) {
+                    cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartFull.png" width="20" align="right">';
+                } else {
+                    cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
+                }
 
                 $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
             + '<div class="card h-100">'
@@ -304,11 +302,11 @@ $(document).ready(function(){
             for (let i =0; i< length; i++) {
                 
             if (candyInfo[i].qty_instock == 0) {
-                cart = '<img class="cartIcon" src="img/outofstock.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/outofstock.png" width="20" align="right">';
             } else if (candyInfo[i].quantity > 0) {
-                cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartFull.png" width="20" align="right">';
             } else {
-                cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
             }
 
                 $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
@@ -344,11 +342,11 @@ $(document).ready(function(){
             for (let i =0; i< length; i++) {
                 
             if (candyInfo[i].qty_instock == 0) {
-                cart = '<img class="cartIcon" src="img/outofstock.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/outofstock.png" width="20" align="right">';
             } else if (candyInfo[i].quantity > 0) {
-                cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartFull.png" width="20" align="right">';
             } else {
-                cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
             }
                 
                 $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
@@ -385,11 +383,11 @@ $(document).ready(function(){
             for (let i =0; i< length; i++) {
                 
             if (candyInfo[i].qty_instock == 0) {
-                cart = '<img class="cartIcon" src="img/outofstock.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/outofstock.png" width="20" align="right">';
             } else if (candyInfo[i].quantity > 0) {
-                cart = '<img class="cartIcon" src="img/cartFull.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartFull.png" width="20" align="right">';
             } else {
-                cart = '<img class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
+                cart = '<img bar_id='+candyInfo[i].bar_id+' class="cartIcon" src="img/cartEmpty.png" width="20" align="right">';
             }
 
                 $("#result").append('<div class="col-lg-4 col-md-6 mb-4">'
