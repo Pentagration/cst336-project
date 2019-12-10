@@ -103,9 +103,6 @@ $(document).ready(function(){
         $("#summary").children("#cart_total").text("$"+(subtotal*1.15).toFixed(2));
     };//setTotal
     
-    //function updateCart(action, bar_id, price) {
-    // Adam commented the above out, below looked to be the right function, but 
-    // was in an odd location
     function updateCart(action, bar_id, price, qty) {
         console.log("UpdateCart Functions");
         $.ajax({
@@ -242,7 +239,6 @@ $(document).ready(function(){
             + '</ul>'+cart+'</div></div></div>');
             
             }//forEach
-                
             }//success
         });//ajax
     });//NoNuts END
@@ -282,7 +278,6 @@ $(document).ready(function(){
             + '</ul>'+cart+'</div></div></div>');
             
             }//forEach
-                
             }//success
         });//ajax
     });//nuts END
@@ -322,7 +317,6 @@ $(document).ready(function(){
             + '</ul>'+cart+'</div></div></div>');
             
             }//forEach
-                
             }//success
         });//ajax
     });//showAll END
@@ -363,7 +357,6 @@ $(document).ready(function(){
             + '</ul>'+cart+'</div></div></div>');
             
             }//forEach
-                
             }//success
         });//ajax
     });//inventory END
@@ -403,12 +396,8 @@ $(document).ready(function(){
             + '</ul>'+cart+'</div></div></div>');
             
             }//forEach
-                
             }//success
         });//ajax
     });//wrapcolor END
     
-    
-    
-            
-});
+});//EOF

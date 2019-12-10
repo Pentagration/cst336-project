@@ -17,12 +17,10 @@ const mysql = require("mysql");
 const tools = require("./tools.js");
 
 // routes
-
 app.get('/', function(req, res) {
     var conn = tools.createConnection();    
     conn.connect(function (err) {
         if (err) throw err;
-        //var sql = "SELECT bar_id, candy_name, nut, nut_type, kcal, FORMAT(price,2) AS price FROM cst336_db026.p_bars";
         var sql = "SELECT bars.bar_id, p_inventory.qty_instock, bars.candy_name, bars.nut, bars.nut_type, kcal, cart.quantity AS quantity, FORMAT(bars.price,2) AS price FROM p_inventory CROSS JOIN p_bars bars ON bars.bar_id = p_inventory.bar_id LEFT JOIN p_cart cart ON cart.bar_id = p_inventory.bar_id ORDER BY bar_id"
         
         conn.query(sql, function(err, result) {
@@ -132,7 +130,7 @@ app.get("/api/admin", function(req, res) {
     
 });//admin
 
-//updateCart
+//updateCart START
 app.get("/api/updateCart", function(req, res) {
     var conn = tools.createConnection();
     var sql;
@@ -152,7 +150,7 @@ app.get("/api/updateCart", function(req, res) {
             if (err) throw err;
         });//query
     });//connect
-});//updateCart
+});//updateCart END
 
 app.get("/api/updateCartBtn", function(req, res){
     var conn = tools.createConnection();
@@ -261,57 +259,6 @@ app.get("/api/colorReport", function(req, res) {
     });//connect
 });//reports
  
-
-// repurpose this for candy bar search?
-app.get("/search", async function(req, res) {
-    //console.dir(req);
-    //console.log(req.query.keyword);
-    var keyword = req.query.keyword;
-    
-    var imageURLs = await tools.getRandomImages(keyword, 9);
-    //console.log("imageURLs: " + imageURLs);
-    res.render("results", {"imageURLs":imageURLs, "keyword":keyword});
-    
-    var conn = tools.createConnection();
-    var sql = "SELECT imageURL FROM favorites WHERE keyword = ?";
-    var sqlParams = [req.query.keyword];
-    
-    conn.connect(function(err){
-        
-        if (err) throw err;
-        conn.query(sql, sqlParams,function(err, results) {
-            if (err) throw err;
-            conn.end();
-            res.send(results);
-            
-        });//query
-        
-    });//connect
-    
-});//search
-
-// repurpose to display cart, no keyword search functionality needed
-app.get("/api/displayFavorites", function(req, res) {
-    
-    var conn = tools.createConnection();
-    var sql = "SELECT imageURL FROM favorites WHERE keyword = ?";
-    var sqlParams = [req.query.keyword];
-    
-    conn.connect(function(err){
-        
-        if (err) throw err;
-        conn.query(sql, sqlParams,function(err, results) {
-            if (err) throw err;
-            conn.end();
-            res.send(results);
-            
-        });//query
-        
-    });//connect
-    
-});//display favorites
-
-
 //noNuts START
 app.get("/api/noNuts", function(req, res) {
    
