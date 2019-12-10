@@ -28,22 +28,21 @@ app.get('/', function(req, res) {
             conn.end();
             res.render("index", {"candyInfo":result}
             );
-            //console.log(result);
         });
     });
-});
+});//root route
 
 
 app.get("/adminLogin", function(req, res) {
     res.render("adminlogin.ejs");
 });//adminLogin
 
+
 app.post("/adminLogin", async function(req, res) {
     let username = req.body.inputEmail;
     let password = req.body.inputPassword;
     
     let result = await tools.checkUsername(username)
-    console.dir(result);
     let hashedPwd = "";
     
     if (result.length > 0) {
@@ -69,14 +68,12 @@ app.post("/adminLogin", async function(req, res) {
     }
 });//adminLogin POST
 
-app.get("/myAccount", tools.isAuthenticated, function(req, res) {
-    res.render("account");
-});//authenticated account
 
 app.get("/logout", function(req, res) {
     req.session.destroy();
     res.redirect("/");
 });//logout
+
 
 app.get("/admin", tools.isAuthenticated, function(req, res) {
     var conn = tools.createConnection();    
@@ -88,7 +85,6 @@ app.get("/admin", tools.isAuthenticated, function(req, res) {
             conn.end();
             res.render("admin", {"candyInfo":result}
             );
-            //console.log(result);
         });
     });
 });//admin
@@ -108,9 +104,10 @@ app.get('/cart', function(req, res) {
     });
 });
 
-app.get("/cart", function(req, res) {
-    res.render("cart.ejs");
-});//cart
+// app.get("/cart", function(req, res) {
+//     res.render("cart.ejs");
+// });//cart
+
 
 app.get("/api/admin", function(req, res) {
     alert("api/updateAdmin");
@@ -123,12 +120,10 @@ app.get("/api/admin", function(req, res) {
             if (err) throw err;
             conn.end();
             res.send(result);
-            console.log(result);
         });
     });
-    
-    
 });//admin
+
 
 //updateCart START
 app.get("/api/updateCart", function(req, res) {
@@ -151,6 +146,7 @@ app.get("/api/updateCart", function(req, res) {
         });//query
     });//connect
 });//updateCart END
+
 
 app.get("/api/updateCartBtn", function(req, res){
     var conn = tools.createConnection();
@@ -176,6 +172,7 @@ app.get("/api/updateCartBtn", function(req, res){
     });//connect
 });//updateCartBtn
 
+
 //updateAdmin
 app.get("/api/updateAdmin", function(req, res) {
     var conn = tools.createConnection();
@@ -189,6 +186,7 @@ app.get("/api/updateAdmin", function(req, res) {
         });//query
     });//connect
 });//updateAdmin
+
 
 //adminUpdateItem
 app.get("/api/adminUpdateItem", function(req, res) {
@@ -204,6 +202,7 @@ app.get("/api/adminUpdateItem", function(req, res) {
     });//connect
 });//adminUpdateItem
 
+
 //adminNewItem
 app.get("/api/adminNewItem", function(req, res) {
     var conn = tools.createConnection();
@@ -217,6 +216,7 @@ app.get("/api/adminNewItem", function(req, res) {
         });//query
     });//connect
 });//adminNewItem
+
 
 //reports
 app.get("/api/priceReport", function(req, res) {
@@ -232,6 +232,7 @@ app.get("/api/priceReport", function(req, res) {
         });//query
     });//connect
 });
+
 app.get("/api/calReport", function(req, res) {
     var conn = tools.createConnection();
     var sql = "SELECT FORMAT(AVG(kcal), 2) AS avgCal FROM cst336_db026.p_bars";
@@ -245,6 +246,7 @@ app.get("/api/calReport", function(req, res) {
         });//query
     });//connect
 });
+
 app.get("/api/colorReport", function(req, res) {
     var conn = tools.createConnection();
     var sql = "SELECT wrap_color as color, count(*) as count FROM cst336_db026.p_bars group by wrap_color;";
@@ -258,6 +260,7 @@ app.get("/api/colorReport", function(req, res) {
         });//query
     });//connect
 });//reports
+
  
 //noNuts START
 app.get("/api/noNuts", function(req, res) {
@@ -273,10 +276,9 @@ app.get("/api/noNuts", function(req, res) {
             conn.end();
             res.send(results);
         });//query
-        
     });//connect
-   
 });//noNuts END
+
 
 //nuts START
 app.get("/api/nuts", function(req, res) {
@@ -292,10 +294,9 @@ app.get("/api/nuts", function(req, res) {
             conn.end();
             res.send(results);
         });//query
-        
     });//connect
-   
 });//noNuts END
+
 
 //showAll START
 app.get("/api/showAll", function(req, res) {
@@ -311,10 +312,9 @@ app.get("/api/showAll", function(req, res) {
             conn.end();
             res.send(results);
         });//query
-        
     });//connect
-   
 });//showAll END
+
 
 //inventory START
 app.get("/api/inventory", function(req, res) {
@@ -330,9 +330,7 @@ app.get("/api/inventory", function(req, res) {
             conn.end();
             res.send(results);
         });//query
-        
     });//connect
-   
 });//inventory END
 
 
@@ -350,9 +348,7 @@ app.get("/api/color", function(req, res) {
             conn.end();
             res.send(results);
         });//query
-        
     });//connect
-   
 });//color END
 
 

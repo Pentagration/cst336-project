@@ -29,7 +29,6 @@ module.exports = {
     checkPassword: function (password, hashedValue) {
         return new Promise(function(resolve, reject) {
             bcrypt.compare(password, hashedValue, function (err, result) {
-                console.log("Result: " + result);
                 resolve(result);
             });
         });
@@ -58,7 +57,6 @@ module.exports = {
                  if (err) throw err;
                  conn.query(sql, [username], function (err, rows, fields) {
                      if (err) throw err;
-                     console.log("Rows found: " + rows.length);
                      resolve(rows);
                  });//query
              });//connect
